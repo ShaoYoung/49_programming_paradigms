@@ -22,9 +22,7 @@ def sort_list_imperative(numbers: list) -> list:
         were_replacements = False
         for i in range(0, len_list - 1):
             if numbers[i] < numbers[i + 1]:
-                temp = numbers[i]
-                numbers[i] = numbers[i + 1]
-                numbers[i + 1] = temp
+                numbers[i], numbers[i + 1] = numbers[i+1], numbers[i]
                 were_replacements = True
     return numbers
 
