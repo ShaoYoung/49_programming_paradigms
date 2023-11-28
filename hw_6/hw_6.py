@@ -16,18 +16,19 @@
 
 
 def binary_search(sorted_list: list, start: int, end: int, number: int) -> int | str:
-    if start == end and sorted_list[start] != number or len(sorted_list) == 1 and sorted_list[0] != number:
+    if start > end or start == end and sorted_list[start] != number:
         return -1
     middle = start + (end - start) // 2
-    if number == sorted_list[middle]:
-        return f'Индекс элемента {number} равен {middle}'
-    elif number > sorted_list[middle]:
+    # print(f'{start=} {end=} {middle=}')
+    if number > sorted_list[middle]:
         return binary_search(sorted_list, middle+1, end, number)
     elif number < sorted_list[middle]:
         return binary_search(sorted_list, start, middle-1, number)
+    else:
+        return f'Индекс элемента {number} равен {middle}'
 
 
 if __name__ == '__main__':
     sorted_list = [1, 3, 4, 6, 7, 8, 10, 13, 14]
-    number = 4
+    number = 7
     print(binary_search(sorted_list, 0, len(sorted_list) - 1, number))
